@@ -1,0 +1,1 @@
+This is graphQL practice repository
