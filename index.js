@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const graphQlSchema = require('./DAO/schema/index');
 // resolver ==> (same as method) import
 const graphQlResolvers = require('./DAO/resolvers/index');
+// is-Auth middleware module import
+const isAuth = require('./middleware/is-auth');
 
 // express server initialize
 const app = express();
@@ -14,6 +16,8 @@ const app = express();
 // body-parser use
 app.use(bodyParser.json());
 
+// middleware that authentication validation detect use
+app.use(isAuth);
 
 // graphQL use.
 app.use('/graphql', graphqlHttp({
