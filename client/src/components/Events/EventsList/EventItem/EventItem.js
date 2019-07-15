@@ -6,11 +6,14 @@ const eventItem = props => (
     <li key={props.eventId} className="event__list-item">
         <div>
             <h1>{props.title}</h1>
-            <h2>$199.99</h2>
+            <h2>${props.price} - {new Date(props.date).toLocaleDateString()}</h2>
         </div>
         <div>
-            <button>View details</button>
-            <p>Your the owner this events</p>
+            {props.userId === props.creatorId ? 
+                (<p>Your the owner this events</p>) : 
+                (<button className="btn" onClick={props.onDetail.bind(this, props.eventId)}>View details</button>)
+            }
+            
         </div>
     </li>
 ); 
